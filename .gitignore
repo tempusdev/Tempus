@@ -1,4 +1,3 @@
-*.vo
-*.glob
-*.v.d
-
+composer.phar
+logs
+vendor
