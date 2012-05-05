@@ -28,6 +28,12 @@ class AppControllerProvider implements ControllerProviderInterface
             return $app->render('app/home.html.twig');
         });
 
+        $controllers->get('/project/{projectId}', function($projectId) use ($app) {
+            $project = $app->projectRepository()->find($projectId);
+
+            return $project->name();
+        });
+
         return $controllers;
     }
 }
