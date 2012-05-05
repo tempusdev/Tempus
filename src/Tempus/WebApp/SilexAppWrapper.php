@@ -32,6 +32,43 @@ class SilexAppWrapper
     }
 
     /**
+     * Wrapped application
+     *
+     * @return Application
+     */
+    public function wrapped()
+    {
+        return $this->wrapped;
+    }
+
+    /**
+     * Get something from the wrapped Silex application
+     *
+     * @param string $key
+     * @return mixed
+     */
+    public function get($key)
+    {
+        return $this->wrapped[$key];
+    }
+
+    /**
+     * Get Doctrine entity manager
+     */
+    public function doctrine()
+    {
+        return $this->wrapped['doctrine.orm.em'];
+    }
+
+    /**
+     * The Project Repository
+     */
+    public function projectRepository()
+    {
+        return $this->doctrine()->getRepository('Tempus\Entity\Project');
+    }
+
+    /**
      * Render
      * 
      * @param string $template
