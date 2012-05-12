@@ -12,6 +12,6 @@
 
 require __DIR__.'/../app/bootstrap.php';
 
-$app = new Tempus\WebApp\App('prod', false);
+$app = new Tempus\WebApp\WebApp('prod', false);
 
 $app->run();
