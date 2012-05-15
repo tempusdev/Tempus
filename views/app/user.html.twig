@@ -1,0 +1,8 @@
+{% extends "layouts/admin.html.twig" %}
+{% block content %}
+
+<h1>User:</h1>
+<h3>Username: {{user.username}}</h3>
+<h3>Password: {{user.password}}</h3>
+<a href="/tempus_dev.php/user/{{user.username}}/edit" class="btn">Edit</a>
+{% endblock %}
