@@ -69,6 +69,23 @@ class SilexAppWrapper
     }
 
     /**
+     * The Activity Repository
+     */
+    public function activityRepository()
+    {
+        return $this->doctrine()->getRepository('Tempus\Entity\Activity');
+    }
+
+    /**
+     * The User Repository
+     */
+    public function userRepository()
+    {
+        return $this->doctrine()->getRepository('Tempus\Entity\User');
+    }
+
+
+    /**
      * Render
      * 
      * @param string $template
