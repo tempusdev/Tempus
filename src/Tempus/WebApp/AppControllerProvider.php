@@ -31,7 +31,31 @@ class AppControllerProvider implements ControllerProviderInterface
         $controllers->get('/project/{projectId}', function($projectId) use ($app) {
             $project = $app->projectRepository()->find($projectId);
 
-            return $project->name();
+            return $app->render('app/project.html.twig', array('project' => $project));
+        });
+
+        $controllers->get('/activity/{activityId}', function($activityId) use ($app) {
+            $activity = $app->activityRepository()->find($activityId);
+
+            return $activity->name();
+        });
+    
+        $controllers->get('/users', function() use ($app) {
+            $users = $app->userRepository()->findAll();
+
+            return $users;
+        });
+
+        $controllers->get('/user/{userId}', function($userId) use ($app) {
+            $user = $app->userRepository()->find($userId);
+
+            return $app->render('app/user.html.twig', array('user' => $user));
+        });
+
+         $controllers->get('/user/{userId}/edit', function($userId) use ($app) {
+            $user = $app->userRepository()->find($userId);
+
+            return $app->render('app/userEdit.html.twig', array('user' => $user));
         });
 
         return $controllers;
