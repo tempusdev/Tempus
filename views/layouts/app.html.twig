@@ -18,7 +18,7 @@
   </head>
 
   <body>
-
+  
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -30,9 +30,9 @@
           <a class="brand" href="#">Project name</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="/">Home</a></li>
-              <li><a href="/tempus_dev.php/project/1">Project</a></li>
-              <li><a href="/tempus_dev.php/user/1">User</a></li>
+              <li class="{% if app.request.attributes.get('_route') == '' %}active{% endif %}"><a href="/">Dashboard</a></li>
+              <li class="{% if app.request.attributes.get('_route') == 'projects' %}active{% endif %}"><a href="/tempus_dev.php/projects">Projects</a></li>
+              <li class="{% if app.request.attributes.get('_route') == 'user' %}active{% endif %}"><a href="/tempus_dev.php/user/larosee">People</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

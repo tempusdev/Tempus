@@ -49,6 +49,16 @@ class Project
 	}
 
 	/**
+	 * Id
+	 *
+	 * @return id
+	 */
+	public function id()
+	{
+		return $this->id;
+	}
+
+	/**
 	 * Name
 	 *
 	 * @return string

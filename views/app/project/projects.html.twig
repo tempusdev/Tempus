@@ -1,0 +1,13 @@
+
+{% extends "layouts/app.html.twig" %}
+{% block content %}
+<h1>My projects</h1>
+<ul>
+    {% for project in projects %}
+        <li><a href="{{app.url_generator.generate('project', {'projectId': project.id })}}">{{ project.name|e }}</a></li>
+    {% endfor %}
+</ul>
+
+<a href="{{app.url_generator.generate('project_new', {})}}" class="btn">New project</a>
+
+{% endblock %}

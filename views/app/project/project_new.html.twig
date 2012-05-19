@@ -1,0 +1,11 @@
+{% extends "layouts/app.html.twig" %}
+
+{% block content %}
+
+<h1>New Project</h1>
+<form name="user_edit" method="POST" action="{{app.url_generator.generate('project_save', {})}}">
+	<h3>Name: <input type="text" name="name" value=""/></h3>
+	<input type="submit" name="submit" value="Create" class="btn"/>
+	<a href="{{app.url_generator.generate('projects', {})}}" class="btn"/>Cancel</a>
+</form>
+{% endblock %}
