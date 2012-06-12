@@ -1,0 +1,11 @@
+{% extends "layouts/app.html.twig" %}
+{% block content %}
+<h3>Activity: {{activity.name}}</h3>
+<p>{{activity.description}}</p>
+
+<form name="activity_delete" method="POST" action="{{app.url_generator.generate('activity_delete', {activityId:activity.id})}}">
+	<input type="submit" name="delete" value="Delete activity" class="btn"/>
+	<input type="hidden" name="activity_id" value="{{activity.id}}"/>
+</form>
+
+{% endblock %}

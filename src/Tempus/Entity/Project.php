@@ -39,6 +39,10 @@ class Project
 	private $name;
 
 	/**
+     */
+    protected $activities = array();
+
+	/**
 	 * Constructor
 	 *
 	 * @param string $name
@@ -46,6 +50,23 @@ class Project
 	public function __construct($name)
 	{
 		$this->name = $name;
+      	$this->activities = new ArrayCollection();
+
+	}
+
+	public function setActivity($activity)
+    {
+        $activity->assignedToProject($this);
+        $this->activities[] = $activity;
+    }
+
+	/**
+	 * [getActivities description]
+	 * @return [type]
+	 */
+	public function getActivities()
+	{
+		return $this->activity;
 	}
 
 	/**

@@ -39,13 +39,36 @@ class Activity
 	private $name;
 
 	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="description", type="string", length=1024)
+	 */
+	private $description;
+
+	/**
+     * @ManyToOne(targetEntity="Project")
+     * @ORM\JoinColumn(name="project_id", referencedColumnName="id", nullable=false)
+     */
+    protected $project = null;
+
+	/**
 	 * Constructor
 	 *
 	 * @param string $name
 	 */
-	public function __construct($name)
+	public function __construct(Project $project, $name)
 	{
 		$this->name = $name;
+	}
+
+	/**
+	 * Id
+	 *
+	 * @return id
+	 */
+	public function id()
+	{
+		return $this->id;
 	}
 
 	/**
@@ -59,6 +82,22 @@ class Activity
 	}
 
 	/**
+	 * Description
+	 *
+	 * @return string
+	 */
+	public function description()
+	{
+		return $this->description;
+	}
+
+	public function getProject()
+	{
+		return $this->project;
+	}	
+
+
+	/**
 	 * Set name
 	 *
 	 * @param string $name
@@ -66,5 +105,15 @@ class Activity
 	public function setName($name)
 	{
 		$this->name = $name;
+	}
+
+	/**
+	 * Set description
+	 *
+	 * @param string $string
+	 */
+	public function setDescription($description)
+	{
+		$this->description = $description;
 	}
 }

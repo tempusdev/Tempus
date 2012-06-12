@@ -1,4 +1,16 @@
 {% extends "layouts/app.html.twig" %}
 {% block content %}
+
 <h3>Project: {{project.name}}</h3>
+
+{% for activity in project.activity %}
+	<p>{{ activity.name }}</p>
+{% endfor %}
+
+
+<form name="project_delete" method="POST" action="{{app.url_generator.generate('project_delete', {projectId:project.id})}}">
+	<input type="submit" name="delete" value="Delete project" class="btn"/>
+	<input type="hidden" name="project_id" value="{{project.id}}"/>
+</form>
+
 {% endblock %}

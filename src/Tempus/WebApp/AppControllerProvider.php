@@ -53,38 +53,89 @@ class AppControllerProvider implements ControllerProviderInterface
         })->bind('project_new');
 
         $controllers->post('/projects/save', function(Request $request) use ($app) {
-
-            $project = new Project($request->get('name'));
-
-            echo "win"; exit;
+            $project = new \Tempus\Entity\Project($request->get('name'));
 
             $app->doctrine()->persist($project);
             $app->doctrine()->flush();
 
-            return $app->render('app/project/project_new.html.twig');
+            return $app->redirect('/tempus_dev.php/project/' . $project->id()); 
 
         })->bind('project_save');
+
+
+        $controllers->post('/project/{projectId}/delete', function(Request $request) use ($app) {
+            if( $request->get('delete')) {
+                $project = $app->projectRepository()->find($request->get('projectId'));
+
+                $app->doctrine()->remove($project);
+                $app->doctrine()->flush();
+            }
+
+            return $app->redirect('/tempus_dev.php/projects'); 
+
+        })->bind('project_delete');
 
 
         $controllers->get('/project/{projectId}', function($projectId) use ($app) {
             $project = $app->projectRepository()->find($projectId);
 
+            echo "<Pre>";
+            print_r($project);
+            echo "Activities: ";
+            print_r($project->getActivity()); exit;
+
             return $app->render('app/project/project.html.twig', array('project' => $project));
         })->bind('project');
-
-        
-
 
 
 
         /**
          * ACTIVITY
          */
+        $controllers->get('/activities', function() use ($app) {
+            $activities = $app->activityRepository()->findAll();
+
+            //echo "<pre>"; print_r($activities); exit;
+
+            return $app->render('app/activity/activities.html.twig', array('activities' => $activities));
+
+        })->bind('activities');
+
+         $controllers->get('/activities/new', function() use ($app) {
+            return $app->render('app/activity/activity_new.html.twig');
+
+        })->bind('activity_new');
+
+        $controllers->post('/activities/save', function(Request $request) use ($app) {
+            $activity = new \Tempus\Entity\Activity($request->get('name'));
+
+            $activity->setDescription($request->get('description'));
+
+            $app->doctrine()->persist($activity);
+            $app->doctrine()->flush();
+
+            return $app->redirect('/tempus_dev.php/activities'); 
+
+        })->bind('activity_save');
+
+        $controllers->post('/activity/{activityId}/delete', function(Request $request) use ($app) {
+            if( $request->get('delete')) {
+                $activity = $app->activityRepository()->find($request->get('activityId'));
+
+                $app->doctrine()->remove($activity);
+                $app->doctrine()->flush();
+            }
+
+            return $app->redirect('/tempus_dev.php/activities'); 
+
+        })->bind('activity_delete');
+
         $controllers->get('/activity/{activityId}', function($activityId) use ($app) {
             $activity = $app->activityRepository()->find($activityId);
 
-            return $activity->name();
-        });
+            return $app->render('app/activity/activity.html.twig', array('activity' => $activity));
+        })->bind('activity');
+   
    
 
         /**
