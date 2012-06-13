@@ -2,7 +2,7 @@
 
 /*
  * This file is a part of tempus/tempus-webapp.
- * 
+ *
  * (c) Josh LaRosee
  *     Beau Simensen
  *
@@ -13,7 +13,7 @@
 namespace Tempus;
 
 use Doctrine\Common\Annotations\AnnotationRegistry;
-use Knp\Silex\ServiceProvider\DoctrineServiceProvider;
+use Tempus\Silex\ServiceProvider\DoctrineOrm\DoctrineOrmServiceProvider;
 use Silex\Application as SilexApplication;
 
 class App
@@ -24,7 +24,7 @@ class App
 
     /**
      * Constructor
-     * 
+     *
      * @param string $env
      * @param bool $debug
      */
@@ -52,7 +52,7 @@ class App
             ));
         }
 
-        $app->register(new DoctrineServiceProvider, array(
+        $app->register(new DoctrineOrmServiceProvider, array(
             'doctrine.dbal.connection_options' => array(
                 'driver' => 'pdo_sqlite',
                 'path' => $projectRoot.'/db/tempus.sqlite',
@@ -76,7 +76,6 @@ class App
 
         AnnotationRegistry::registerFile($projectRoot.'/vendor/doctrine/orm/lib/Doctrine/ORM/Mapping/Driver/DoctrineAnnotations.php');
 
-        $app->register(new \Silex\Provider\SymfonyBridgesServiceProvider());
         $app->register(new \Silex\Provider\TwigServiceProvider(), array(
             'twig.path' => $projectRoot.'/views',
             'twig.options' => array('cache' => false,),

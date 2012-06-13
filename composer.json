@@ -13,7 +13,6 @@
     ],
     "require": {
         "dflydev/dot-access-configuration": "1.*",
-        "docteurklein/silex-doctrine-service-providers": "dev-master",
         "doctrine/dbal": "2.1.*",
         "doctrine/migrations": "dev-master",
         "monolog/monolog": "1.*",
