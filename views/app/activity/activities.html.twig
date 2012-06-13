@@ -1,0 +1,17 @@
+
+{% extends "layouts/app.html.twig" %}
+{% block content %}
+<h1>Activities</h1>
+<div>
+    {% for a in activities %}
+        <div class="">
+        	<h3><a href="{{app.url_generator.generate('activity', {'activityId': a.id })}}">{{a.name|e}}</a></h3>
+        	<p>{{a.description|e}}</p>
+        	<a href="{{app.url_generator.generate('project', {'projectId': a.project.id})}}">{{a.project.name}}</a>
+        </dvi>
+    {% endfor %}
+</div>
+
+<a href="{{app.url_generator.generate('activity_new', {})}}" class="btn">New activity</a>
+
+{% endblock %}

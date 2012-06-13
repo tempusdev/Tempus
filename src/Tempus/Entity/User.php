@@ -50,14 +50,14 @@ class User
 	 *
 	 * @ORM\Column(name="updated_at", type="datetime")
 	 */
-	private $updated_at;
+	private $updatedAt;
 
 	/**
 	 * @var string
 	 *
 	 * @ORM\Column(name="created_at", type="datetime")
 	 */
-	private $created_at;
+	private $createdAt;
 
 
 	/**
@@ -85,7 +85,7 @@ class User
 	 *
 	 * @param string $name
 	 */
-	public function setUserame($username)
+	public function setUsername($username)
 	{
 		$this->username = $username;
 	}

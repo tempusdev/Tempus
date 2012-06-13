@@ -14,6 +14,9 @@ namespace Tempus\WebApp;
 
 use Tempus\App;
 
+use Silex\Provider\UrlGeneratorServiceProvider;
+
+
 class WebApp extends App
 {
     public function run()
@@ -30,5 +33,8 @@ class WebApp extends App
         $app->mount('/', new AppControllerProvider);
         $app->mount('/api', new ApiControllerProvider);
         $app->mount('/admin', new AdminControllerProvider);
+
+        $app->register(new UrlGeneratorServiceProvider());
+
     }
 }

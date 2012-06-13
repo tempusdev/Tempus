@@ -96,4 +96,12 @@ class SilexAppWrapper
     {
         return $this->wrapped['twig']->render($template, $context);
     }
+
+    /**
+     * Redirect wrapper
+     */
+    public function redirect($to, $status = 302)
+    {
+        return $this->wrapped->redirect($to, $status);
+    }
 } 

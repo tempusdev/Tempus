@@ -1,0 +1,26 @@
+{% extends "layouts/app.html.twig" %}
+
+{% block content %}
+
+<form class="form-inline" name="user_edit" method="POST" action="{{app.url_generator.generate('activity_save', {})}}">
+    <legend>New Activity</legend>
+ 	<fieldset>
+ 		<div class="control-group">
+			<label class="control-label" for="name">Name:</label>
+			<div class="controls">
+				<input id="name" type="text" name="name" value="" class="input-xlarge" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="description">Description:</label>
+			<div class="controls">
+				<textarea id="description" type="text" name="description" value="" class="input-xl" style="width: 40%"></textarea>
+			</div>
+		</div>
+		<div class="form-actions">
+			<input type="submit" name="submit" value="Create" class="btn"/>
+			<a href="{{app.url_generator.generate('activities', {})}}" class="btn"/>Cancel</a>
+		</div>
+	</fieldset>
+</form>
+{% endblock %}

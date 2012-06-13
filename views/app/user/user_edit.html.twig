@@ -1,0 +1,12 @@
+{% extends "layouts/app.html.twig" %}
+
+{% block content %}
+
+<h1>User edit:</h1>
+<form name="user_edit" method="POST" action="{{app.url_generator.generate('user_save', {'username': user.username})}}">
+	<h3>Username: <input type="text" name="username" value="{{user.username}}"/></h3>
+	<h3>Username: <input type="text" name="password" value="{{user.password}}"/></h3>
+	<input type="submit" href="/tempus_dev.php/user/{{user.username}}/edit" class="btn"/>
+	<a href="{{app.url_generator.generate('user', {'username': user.username})}}" class="btn"/>Cancel</a>
+</form>
+{% endblock %}
