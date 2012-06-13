@@ -14,6 +14,7 @@
     "require": {
         "dflydev/dot-access-configuration": "1.*",
         "doctrine/dbal": "2.1.*",
+        "doctrine/orm": "2.1.*",
         "doctrine/migrations": "dev-master",
         "monolog/monolog": "1.*",
         "silex/silex": "1.*",
