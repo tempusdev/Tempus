@@ -2,7 +2,7 @@
 
 /*
  * This file is a part of tempus/tempus-webapp.
- * 
+ *
  * (c) Josh LaRosee
  *     Beau Simensen
  *
@@ -46,10 +46,10 @@ class Activity
 	private $description;
 
 	/**
-     * @ManyToOne(targetEntity="Project")
+     * @ORM\ManyToOne(targetEntity="Project")
      * @ORM\JoinColumn(name="project_id", referencedColumnName="id", nullable=false)
      */
-    protected $project = null;
+    protected $project;
 
 	/**
 	 * Constructor
@@ -58,6 +58,7 @@ class Activity
 	 */
 	public function __construct(Project $project, $name)
 	{
+		$this->project = $project;
 		$this->name = $name;
 	}
 
@@ -91,10 +92,15 @@ class Activity
 		return $this->description;
 	}
 
-	public function getProject()
+	/**
+	 * Project
+	 *
+	 * @return Project
+	 */
+	public function project()
 	{
 		return $this->project;
-	}	
+	}
 
 
 	/**

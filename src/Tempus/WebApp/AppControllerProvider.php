@@ -2,7 +2,7 @@
 
 /*
  * This file is a part of tempus/tempus-webapp.
- * 
+ *
  * (c) Josh LaRosee
  *     Beau Simensen
  *
@@ -31,7 +31,7 @@ class AppControllerProvider implements ControllerProviderInterface
          */
         $controllers->get('/', function() use ($app) {
             return $app->render('app/dashboard/dashboard.html.twig');
-        });
+        })->bind('dashboard');
 
 
 
@@ -58,7 +58,7 @@ class AppControllerProvider implements ControllerProviderInterface
             $app->doctrine()->persist($project);
             $app->doctrine()->flush();
 
-            return $app->redirect('/tempus_dev.php/project/' . $project->id()); 
+            return $app->redirect('/tempus_dev.php/project/' . $project->id());
 
         })->bind('project_save');
 
@@ -71,7 +71,7 @@ class AppControllerProvider implements ControllerProviderInterface
                 $app->doctrine()->flush();
             }
 
-            return $app->redirect('/tempus_dev.php/projects'); 
+            return $app->redirect('/tempus_dev.php/projects');
 
         })->bind('project_delete');
 
@@ -114,7 +114,7 @@ class AppControllerProvider implements ControllerProviderInterface
             $app->doctrine()->persist($activity);
             $app->doctrine()->flush();
 
-            return $app->redirect('/tempus_dev.php/activities'); 
+            return $app->redirect('/tempus_dev.php/activities');
 
         })->bind('activity_save');
 
@@ -126,7 +126,7 @@ class AppControllerProvider implements ControllerProviderInterface
                 $app->doctrine()->flush();
             }
 
-            return $app->redirect('/tempus_dev.php/activities'); 
+            return $app->redirect('/tempus_dev.php/activities');
 
         })->bind('activity_delete');
 
@@ -135,12 +135,12 @@ class AppControllerProvider implements ControllerProviderInterface
 
             return $app->render('app/activity/activity.html.twig', array('activity' => $activity));
         })->bind('activity');
-   
-   
+
+
 
         /**
          * USER
-         */ 
+         */
         $controllers->get('/users', function() use ($app) {
             $users = $app->userRepository()->findAll();
 

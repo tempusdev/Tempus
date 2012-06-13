@@ -7,8 +7,8 @@
     <meta name="description" content="time tracking for people who hate tracking time">
     <meta name="author" content="simensen@gmail.com, joshlarosee@gmail.com">
 
-        <link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
-        <link href="/assets/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+        <link href="{{ app.request.basePath }}/assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="{{ app.request.basePath }}/assets/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
         <style>
           body {
             padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -18,7 +18,7 @@
   </head>
 
   <body>
-  
+
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -30,10 +30,10 @@
           <a class="brand" href="#">Project name</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="{% if app.request.attributes.get('_route') == '' %}active{% endif %}"><a href="/">Dashboard</a></li>
-              <li class="{% if app.request.attributes.get('_route') == 'projects' %}active{% endif %}"><a href="/tempus_dev.php/projects">Projects</a></li>
+              <li class="{% if app.request.attributes.get('_route') == '' %}active{% endif %}"><a href="{{ app.url_generator.generate('dashboard') }}">Dashboard</a></li>
+              <li class="{% if app.request.attributes.get('_route') == 'projects' %}active{% endif %}"><a href="{{ app.url_generator.generate('projects') }}">Projects</a></li>
               <li class="{% if app.request.attributes.get('_route') == 'user' %}active{% endif %}"><a href="/tempus_dev.php/user/larosee">People</a></li>
-              <li class="{% if app.request.attributes.get('_route') == 'activities' %}active{% endif %}"><a href="/tempus_dev.php/activities">Activities</a></li>
+              <li class="{% if app.request.attributes.get('_route') == 'activities' %}active{% endif %}"><a href="{{ app.url_generator.generate('activities') }}">Activities</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

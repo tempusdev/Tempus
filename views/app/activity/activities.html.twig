@@ -7,6 +7,7 @@
         <div class="">
         	<h3><a href="{{app.url_generator.generate('activity', {'activityId': a.id })}}">{{a.name|e}}</a></h3>
         	<p>{{a.description|e}}</p>
+        	<a href="{{app.url_generator.generate('project', {'projectId': a.project.id})}}">{{a.project.name}}</a>
         </dvi>
     {% endfor %}
 </div>
